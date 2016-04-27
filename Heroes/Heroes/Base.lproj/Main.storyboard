@@ -20,6 +20,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="eligePersonaje" translatesAutoresizingMaskIntoConstraints="NO" id="tOu-mR-RdZ">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSZ-5l-gFV">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPu-Tn-AYz">
                                 <rect key="frame" x="128" y="295" width="230" height="225"/>
                                 <state key="normal" image="boy"/>
@@ -40,7 +46,10 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
-                        <segue destination="pgw-lq-IeQ" kind="show" identifier="tapTapSegue" animates="NO" id="gd6-3X-cMj"/>
+                        <outlet property="backgroundColor" destination="kSZ-5l-gFV" id="7hE-tq-mzR"/>
+                        <outlet property="boyButton" destination="HPu-Tn-AYz" id="8f5-yW-F8d"/>
+                        <outlet property="girlButton" destination="2Ge-fd-JMj" id="Bun-Jx-dIE"/>
+                        <segue destination="Pl4-fk-faa" kind="show" identifier="crearUsuarioSegue" animates="NO" id="YqC-9d-h0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -75,6 +84,13 @@
                                     <action selector="tapCircle:" destination="pgw-lq-IeQ" eventType="touchUpInside" id="qn1-zK-xVF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PL-Ht-Kps">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.33725490200000002" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -85,10 +101,211 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXV-zC-oyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="312"/>
+            <point key="canvasLocation" x="1599" y="302"/>
+        </scene>
+        <!--Games View Controller-->
+        <scene sceneID="eLb-Ez-nRi">
+            <objects>
+                <viewController id="T9Y-qn-LYM" customClass="GamesViewController" customModule="Heroes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5lJ-7v-gNz"/>
+                        <viewControllerLayoutGuide type="bottom" id="FLq-KE-9cu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1c1-0k-cg9">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hD-ZL-AVH">
+                                <rect key="frame" x="167" y="285" width="51" height="30"/>
+                                <state key="normal" title="Game 1"/>
+                                <connections>
+                                    <action selector="game1Action:" destination="T9Y-qn-LYM" eventType="touchUpInside" id="xRi-gn-R29"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="pgw-lq-IeQ" kind="show" identifier="tapTapSegue" animates="NO" id="bSn-MJ-k3S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqN-le-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405" y="1419"/>
+        </scene>
+        <!--Crea Usuario View Controller-->
+        <scene sceneID="g3u-Lx-byc">
+            <objects>
+                <viewController id="Pl4-fk-faa" customClass="CreaUsuarioViewController" customModule="Heroes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ych-B1-OJf"/>
+                        <viewControllerLayoutGuide type="bottom" id="u4d-Np-bzZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DHk-ex-JAH">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="boy" translatesAutoresizingMaskIntoConstraints="NO" id="CAm-oz-qXh">
+                                <rect key="frame" x="128" y="295" width="230" height="225"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="Bjr-oN-EHZ">
+                                <rect key="frame" x="667" y="288" width="230" height="225"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lle-og-ggy">
+                                <rect key="frame" x="566" y="485" width="391" height="29"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                    <segment title="6"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="gradoPrimAction:" destination="Pl4-fk-faa" eventType="valueChanged" id="CRA-zP-1AL"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Zn-pY-azA">
+                                <rect key="frame" x="85" y="485" width="391" height="29"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                    <segment title="6"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="gradoPrimAction:" destination="Pl4-fk-faa" eventType="valueChanged" id="AVU-Ly-s3N"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Pv-c3-vSJ">
+                                <rect key="frame" x="85" y="485" width="391" height="29"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="gradoSecAction:" destination="Pl4-fk-faa" eventType="valueChanged" id="msW-Sp-PqE"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UrI-r2-Dd7">
+                                <rect key="frame" x="566" y="485" width="391" height="29"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="gradoSecAction:" destination="Pl4-fk-faa" eventType="valueChanged" id="m7u-QF-4Zb"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="p8X-Pn-r7U">
+                                <rect key="frame" x="566" y="347" width="391" height="29"/>
+                                <segments>
+                                    <segment title="Primaria"/>
+                                    <segment title="Secundaria"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="primSecAction:" destination="Pl4-fk-faa" eventType="valueChanged" id="2T2-4d-nZR"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zc1-P3-K7G">
+                                <rect key="frame" x="85" y="347" width="391" height="29"/>
+                                <segments>
+                                    <segment title="Primaria"/>
+                                    <segment title="Secundaria"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="primSecAction:" destination="Pl4-fk-faa" eventType="valueChanged" id="y5f-4D-r9Q"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pbq-cZ-YLm">
+                                <rect key="frame" x="566" y="250" width="391" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0PO-bo-YdV">
+                                <rect key="frame" x="85" y="250" width="391" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnJ-W4-Rkf">
+                                <rect key="frame" x="85" y="200" width="168" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bj-2g-AMq">
+                                <rect key="frame" x="566" y="200" width="168" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grado:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W8-77-Uzj">
+                                <rect key="frame" x="566" y="424" width="168" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grado:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rj-lC-O0h">
+                                <rect key="frame" x="85" y="424" width="168" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25Z-ao-ApV">
+                                <rect key="frame" x="20" y="28" width="49" height="42"/>
+                                <state key="normal" image="backButton"/>
+                                <connections>
+                                    <action selector="backAction:" destination="Pl4-fk-faa" eventType="touchUpInside" id="EkB-s0-lBb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnL-Em-CNL">
+                                <rect key="frame" x="357" y="665" width="310" height="60"/>
+                                <state key="normal" image="botonJugar"/>
+                                <connections>
+                                    <action selector="playAction:" destination="Pl4-fk-faa" eventType="touchUpInside" id="zXN-Ze-3Ht"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="25Z-ao-ApV" id="T03-Va-bcQ"/>
+                        <outlet property="boyImage" destination="CAm-oz-qXh" id="qYN-7l-Xhw"/>
+                        <outlet property="girlImage" destination="Bjr-oN-EHZ" id="qfk-ZH-eQ0"/>
+                        <outlet property="gradoBoy" destination="5W8-77-Uzj" id="esH-2t-7du"/>
+                        <outlet property="gradoGirl" destination="8Rj-lC-O0h" id="LRq-CZ-O1r"/>
+                        <outlet property="gradoPrimBoy" destination="Lle-og-ggy" id="5yq-AB-ReN"/>
+                        <outlet property="gradoPrimGirl" destination="6Zn-pY-azA" id="sXS-DR-f57"/>
+                        <outlet property="gradoSecBoy" destination="UrI-r2-Dd7" id="Ls4-Dc-1gv"/>
+                        <outlet property="gradoSecGirl" destination="8Pv-c3-vSJ" id="ZA6-rp-BVs"/>
+                        <outlet property="nombreBoy" destination="1bj-2g-AMq" id="IRr-qA-nI6"/>
+                        <outlet property="nombreGirl" destination="BnJ-W4-Rkf" id="lCi-TS-IfM"/>
+                        <outlet property="nombreTextFieldBoy" destination="pbq-cZ-YLm" id="mkv-2p-xPm"/>
+                        <outlet property="nombreTextFieldGirl" destination="0PO-bo-YdV" id="fP3-R5-veV"/>
+                        <outlet property="playButton" destination="wnL-Em-CNL" id="iMs-SW-sn4"/>
+                        <outlet property="primSecBoy" destination="p8X-Pn-r7U" id="aSn-f0-Fb3"/>
+                        <outlet property="primSecGirl" destination="zc1-P3-K7G" id="ipM-7s-qZa"/>
+                        <segue destination="T9Y-qn-LYM" kind="show" identifier="gamesSegue" animates="NO" id="lEh-fC-UiL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zrl-sF-xi2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-87" y="1419"/>
         </scene>
     </scenes>
     <resources>
+        <image name="backButton" width="49" height="42"/>
+        <image name="botonJugar" width="310" height="60"/>
         <image name="boy" width="230" height="225"/>
         <image name="eligePersonaje" width="1024" height="768"/>
         <image name="girl" width="231" height="218"/>

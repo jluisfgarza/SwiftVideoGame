@@ -10,6 +10,8 @@
 		37721DC41CD0771100D95791 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37721DC31CD0771100D95791 /* ChooseViewController.swift */; };
 		37721DC61CD0787400D95791 /* circleSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37721DC51CD0787400D95791 /* circleSound.mp3 */; };
 		37721DC81CD0788000D95791 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37721DC71CD0788000D95791 /* wrong.mp3 */; };
+		37721DCA1CD11CFE00D95791 /* CreaUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */; };
+		37721DCC1CD1344900D95791 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37721DCB1CD1344900D95791 /* GamesViewController.swift */; };
 		37F50EA91CCEF47200500440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F50EA81CCEF47200500440 /* AppDelegate.swift */; };
 		37F50EAB1CCEF47200500440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F50EAA1CCEF47200500440 /* ViewController.swift */; };
 		37F50EAE1CCEF47200500440 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F50EAC1CCEF47200500440 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		37721DC31CD0771100D95791 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		37721DC51CD0787400D95791 /* circleSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circleSound.mp3; sourceTree = "<group>"; };
 		37721DC71CD0788000D95791 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
+		37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreaUsuarioViewController.swift; sourceTree = "<group>"; };
+		37721DCB1CD1344900D95791 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		37F50EA51CCEF47100500440 /* Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F50EA81CCEF47200500440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F50EAA1CCEF47200500440 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				37F50EAA1CCEF47200500440 /* ViewController.swift */,
 				37F50EAC1CCEF47200500440 /* Main.storyboard */,
 				37721DC31CD0771100D95791 /* ChooseViewController.swift */,
+				37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */,
+				37721DCB1CD1344900D95791 /* GamesViewController.swift */,
 				37F50EBA1CCEF99400500440 /* TapTapViewController.swift */,
 				37F50EBC1CCEF9D300500440 /* ColorConstants.swift */,
 				37F50EAF1CCEF47200500440 /* Assets.xcassets */,
@@ -111,6 +117,7 @@
 				TargetAttributes = {
 					37F50EA41CCEF47100500440 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9GJY67MQJM;
 					};
 				};
 			};
@@ -152,6 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37721DCC1CD1344900D95791 /* GamesViewController.swift in Sources */,
+				37721DCA1CD11CFE00D95791 /* CreaUsuarioViewController.swift in Sources */,
 				37F50EAB1CCEF47200500440 /* ViewController.swift in Sources */,
 				37F50EBB1CCEF99400500440 /* TapTapViewController.swift in Sources */,
 				37F50EA91CCEF47200500440 /* AppDelegate.swift in Sources */,
@@ -271,10 +280,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Heroes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lfsv.Heroes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -282,10 +295,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Heroes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lfsv.Heroes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
