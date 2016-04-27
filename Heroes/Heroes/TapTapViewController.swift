@@ -25,6 +25,8 @@ class TapTapViewController: UIViewController {
 
     // 🇲🇽
     @IBOutlet var circleButton: UIButton!
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var whiteBg: UILabel!
 
     // Initialization of variables.
     var iTaps = 0               // Integer number of taps made.
@@ -33,6 +35,8 @@ class TapTapViewController: UIViewController {
     var pares = true            // Boolean variable 🇲🇽
     var newButtonX : CGFloat!   // 🇲🇽
     var newButtonY : CGFloat!   // 🇲🇽
+    
+    
 
     // Initialization of sound variables.
     var circleSound: AVAudioPlayer = AVAudioPlayer()
@@ -42,7 +46,7 @@ class TapTapViewController: UIViewController {
 
     // First function that runs when the game starts.
     override func viewDidLoad() {
-        super.viewDidLoad() // 🇲🇽
+        super.viewDidLoad()
 
         // Sounds 🇲🇽
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
@@ -56,13 +60,21 @@ class TapTapViewController: UIViewController {
         // Do any additional setup after loading the view.
         if boy {
             view.backgroundColor = .boyColor()
+            scoreLabel.textColor = .boyColor()
             circleButton.setTitleColor(.boyColor(), forState: .Normal)
         } else {
             view.backgroundColor = .girlColor()
+            scoreLabel.textColor = .girlColor()
             circleButton.setTitleColor(.girlColor(), forState: .Normal)
         }
         
+        whiteBg.alpha = 0.0
+        scoreLabel.alpha = 0.0
+        
+        
+        
         displayCircle()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +110,7 @@ class TapTapViewController: UIViewController {
             } else {
                 // Player looses.
                 playWrongSound()
+                endGame()
             }
         } else {
             if (number % 2) == 1 {
@@ -108,6 +121,7 @@ class TapTapViewController: UIViewController {
             } else {
                 // Player looses.
                 playWrongSound()
+                endGame()
             }
         }
     }
@@ -117,6 +131,7 @@ class TapTapViewController: UIViewController {
             if (number % 2) == 0 {
                 // lose
                playWrongSound()
+                endGame()
             } else {
                 playCircleSound()
                 iTaps += 1
@@ -126,6 +141,7 @@ class TapTapViewController: UIViewController {
             if (number % 2) == 1 {
                 // lose
                 playWrongSound()
+                endGame()
             } else {
                 playCircleSound()
                 iTaps += 1
@@ -165,6 +181,18 @@ class TapTapViewController: UIViewController {
 
 
 
+    }
+    
+    func endGame() {
+        scoreLabel.text = "Puntaje: \(iTaps)"
+        UIView.animateWithDuration(0.3, delay: 0.0, options: [], animations: { 
+            self.whiteBg.alpha = 1.0
+            
+            self.scoreLabel.alpha = 1.0
+            
+            }) { (Bool) in
+                
+        }
     }
 
 
