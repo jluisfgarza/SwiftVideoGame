@@ -27,16 +27,14 @@ class TapTapViewController: UIViewController {
     @IBOutlet var circleButton: UIButton!
 
     // Initialization of variables.
-    var iTaps = 0         // Integer number of taps made.
-    var number = 0        // 🇲🇽
-
-    var boy = true        // 🇲🇽
-    var pares = true      // 🇲🇽
-
+    var iTaps = 0               // Integer number of taps made.
+    var number = 0              // Integer number 🇲🇽
+    var boy = true              // Boolean variable 🇲🇽
+    var pares = true            // Boolean variable 🇲🇽
     var newButtonX : CGFloat!   // 🇲🇽
     var newButtonY : CGFloat!   // 🇲🇽
 
-    // Initialization of sounds.
+    // Initialization of sound variables.
     var circleSound: AVAudioPlayer = AVAudioPlayer()
     var wrongSound: AVAudioPlayer = AVAudioPlayer()
     let circleSoundLocation = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("circleSound", ofType: "mp3")!)
@@ -46,7 +44,7 @@ class TapTapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad() // 🇲🇽
 
-        // Sounds
+        // Sounds 🇲🇽
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         try! AVAudioSession.sharedInstance().setActive(true)
         try! wrongSound = AVAudioPlayer(contentsOfURL: wrongSoundLocation, fileTypeHint: nil)
@@ -63,7 +61,7 @@ class TapTapViewController: UIViewController {
             view.backgroundColor = .girlColor()
             circleButton.setTitleColor(.girlColor(), forState: .Normal)
         }
-
+        
         displayCircle()
     }
 
@@ -81,7 +79,7 @@ class TapTapViewController: UIViewController {
         }
     }
 
-    //Sound funcs
+    // Sound functions.
     func playCircleSound() {
         circleSound.play()
     }
@@ -90,6 +88,7 @@ class TapTapViewController: UIViewController {
         wrongSound.play()
     }
 
+    // 🇲🇽
     @IBAction func tapCircle(sender: AnyObject) {
         if pares {
             if (number % 2) == 0 {
@@ -97,7 +96,7 @@ class TapTapViewController: UIViewController {
                 iTaps += 1
                 displayCircle()
             } else {
-                // lose
+                // Player looses.
                 playWrongSound()
             }
         } else {
@@ -107,7 +106,7 @@ class TapTapViewController: UIViewController {
                 displayCircle()
 
             } else {
-                // lose
+                // Player looses.
                 playWrongSound()
             }
         }
@@ -136,7 +135,7 @@ class TapTapViewController: UIViewController {
     }
 
     func displayCircle(){
-        //Set by rand from 0 to 150
+        // Set by rand from 0 to 150
         number = Int(arc4random_uniform(151))
 
         // Set button title
