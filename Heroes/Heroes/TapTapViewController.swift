@@ -9,29 +9,44 @@
 import UIKit
 import AVFoundation
 
+/**
+ *
+ * @authors Luis Felipe Salazar, Juan Luis Flores, Carlos Serret, Melissa Treviño
+ *
+ * TapTap is a time-based game about choosing if a number is the right answer,
+ * depending on the instruction given at the beginning.
+ *
+ * 25/APR/16
+ * @version 1.0
+ *
+ */
+
 class TapTapViewController: UIViewController {
 
+    // 🇲🇽
     @IBOutlet var circleButton: UIButton!
-    
-    var iTaps = 0
-    var number = 0
-    
-    var boy = true
-    var pares = true
-    
-    var newButtonX : CGFloat!
-    var newButtonY : CGFloat!
-    
-    //Sounds
+
+    // Initialization of variables.
+    var iTaps = 0         // Integer number of taps made.
+    var number = 0        // 🇲🇽
+
+    var boy = true        // 🇲🇽
+    var pares = true      // 🇲🇽
+
+    var newButtonX : CGFloat!   // 🇲🇽
+    var newButtonY : CGFloat!   // 🇲🇽
+
+    // Initialization of sounds.
     var circleSound: AVAudioPlayer = AVAudioPlayer()
     var wrongSound: AVAudioPlayer = AVAudioPlayer()
     let circleSoundLocation = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("circleSound", ofType: "mp3")!)
     let wrongSoundLocation = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("wrong", ofType: "mp3")!)
-    
+
+    // First function that runs when the game starts.
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Sounds
+        super.viewDidLoad() // 🇲🇽
+
+        // Sounds
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         try! AVAudioSession.sharedInstance().setActive(true)
         try! wrongSound = AVAudioPlayer(contentsOfURL: wrongSoundLocation, fileTypeHint: nil)
@@ -48,7 +63,7 @@ class TapTapViewController: UIViewController {
             view.backgroundColor = .girlColor()
             circleButton.setTitleColor(.girlColor(), forState: .Normal)
         }
-        
+
         displayCircle()
     }
 
@@ -56,7 +71,7 @@ class TapTapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewDidLayoutSubviews() {
         if let buttonX = newButtonX {
             circleButton.center.x = buttonX
@@ -65,16 +80,16 @@ class TapTapViewController: UIViewController {
             circleButton.center.y = buttonY
         }
     }
-    
+
     //Sound funcs
     func playCircleSound() {
         circleSound.play()
     }
-    
+
     func playWrongSound() {
         wrongSound.play()
     }
-    
+
     @IBAction func tapCircle(sender: AnyObject) {
         if pares {
             if (number % 2) == 0 {
@@ -90,14 +105,14 @@ class TapTapViewController: UIViewController {
                 playCircleSound()
                 iTaps += 1
                 displayCircle()
-                
+
             } else {
                 // lose
                 playWrongSound()
             }
         }
     }
-    
+
     @IBAction func tapBackground(sender: AnyObject) {
         if pares {
             if (number % 2) == 0 {
@@ -119,38 +134,38 @@ class TapTapViewController: UIViewController {
             }
         }
     }
-    
+
     func displayCircle(){
         //Set by rand from 0 to 150
         number = Int(arc4random_uniform(151))
-        
+
         // Set button title
         circleButton.setTitle("\(number)", forState: .Normal)
-        
+
         // Get button width and height
         let buttonWidth = circleButton.frame.width
         let buttonHeight = circleButton.frame.height
-        
+
         // Find the width and height of the enclosing view
         let viewWidth = circleButton.superview!.bounds.width
         let viewHeight = circleButton.superview!.bounds.height
-        
+
         // Compute width and height of the area to contain the button's center
         let xwidth = viewWidth - buttonWidth
         let yheight = viewHeight - buttonHeight
-        
+
         // Generate a random x and y offset
         let xoffset = CGFloat(arc4random_uniform(UInt32(xwidth)))
         let yoffset = CGFloat(arc4random_uniform(UInt32(yheight - 50)))
-        
+
         // Offset the button's center by the random offsets.
         newButtonX = xoffset + buttonWidth / 2
         newButtonY = yoffset + 50 + buttonHeight / 2 //50 is for notifications
         circleButton.center.x = newButtonX
         circleButton.center.y = newButtonY
-        
-        
-        
+
+
+
     }
 
 
