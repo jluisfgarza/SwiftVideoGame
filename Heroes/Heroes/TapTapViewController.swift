@@ -25,16 +25,23 @@ class TapTapViewController: UIViewController {
 
     // 🇲🇽
     @IBOutlet var circleButton: UIButton!
-    @IBOutlet var scoreLabel: UILabel!
-    @IBOutlet var whiteBg: UILabel!
+    @IBOutlet var instructionLabel: UILabel!
+    @IBOutlet var whiteLayer: UILabel!
 
+    @IBOutlet var pauseBackground: UILabel!
+    @IBOutlet var continueButton: UIButton!
+    
+    @IBOutlet var playerImage: UIImageView!
+    
     // Initialization of variables.
     var iTaps = 0               // Integer number of taps made.
-    var number = 0              // Integer number 🇲🇽
-    var boy = true              // Boolean variable 🇲🇽
-    var pares = true            // Boolean variable 🇲🇽
-    var newButtonX : CGFloat!   // 🇲🇽
-    var newButtonY : CGFloat!   // 🇲🇽
+    var number = 0              // Integer number that is showed on the game
+    var boy = true              // Bool variable that tells us if the player is a boy or a girls
+    var even = true             // Bool variable to know if the answers are odd or even
+    var playing = false         // Bool variable
+    var newButtonX : CGFloat!   // CGFloat variable to change X position of the circle button
+    var newButtonY : CGFloat!   // CGFloat variable to change Y position of the circle button
+    var multiple = 0            // Integer number to know if the game is for multiples and which one
     
     
 
@@ -48,32 +55,39 @@ class TapTapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Sounds 🇲🇽
-        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-        try! AVAudioSession.sharedInstance().setActive(true)
+        // Setting sounds
+        //try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        //try! AVAudioSession.sharedInstance().setActive(true)
         try! wrongSound = AVAudioPlayer(contentsOfURL: wrongSoundLocation, fileTypeHint: nil)
         try! circleSound = AVAudioPlayer(contentsOfURL: circleSoundLocation, fileTypeHint: nil)
         circleSound.volume = 9
         wrongSound.prepareToPlay()
         circleSound.prepareToPlay()
 
-        // Do any additional setup after loading the view.
+        // Changing colors
         if boy {
             view.backgroundColor = .boyColor()
-            scoreLabel.textColor = .boyColor()
             circleButton.setTitleColor(.boyColor(), forState: .Normal)
         } else {
             view.backgroundColor = .girlColor()
-            scoreLabel.textColor = .girlColor()
             circleButton.setTitleColor(.girlColor(), forState: .Normal)
         }
         
-        whiteBg.alpha = 0.0
-        scoreLabel.alpha = 0.0
+        pauseBackground.alpha = 0.0
+        continueButton.alpha = 0.0
+        playerImage.alpha = 0.0
+        whiteLayer.alpha = 0.0
+        
+        if boy {
+            playerImage.image = UIImage(named: "boy")
+        } else {
+            playerImage.image = UIImage(named: "girl")
+        }
         
         
-        
+        // Start game
         displayCircle()
+        playing = true
         
     }
 
@@ -83,12 +97,14 @@ class TapTapViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
+        /*
         if let buttonX = newButtonX {
             circleButton.center.x = buttonX
         }
         if let buttonY = newButtonY {
             circleButton.center.y = buttonY
         }
+ */
     }
 
     // Sound functions.
@@ -102,57 +118,115 @@ class TapTapViewController: UIViewController {
 
     // 🇲🇽
     @IBAction func tapCircle(sender: AnyObject) {
-        if pares {
-            if (number % 2) == 0 {
-                playCircleSound()
-                iTaps += 1
-                displayCircle()
+        if playing {
+            if even {
+                checkEven(true)
+            } else if multiple != 0{
+                checkMultiple(true)
             } else {
-                // Player looses.
-                playWrongSound()
-                endGame()
-            }
-        } else {
-            if (number % 2) == 1 {
-                playCircleSound()
-                iTaps += 1
-                displayCircle()
-
-            } else {
-                // Player looses.
-                playWrongSound()
-                endGame()
+                checkOdd(true)
             }
         }
+        
     }
 
     @IBAction func tapBackground(sender: AnyObject) {
-        if pares {
-            if (number % 2) == 0 {
-                // lose
-               playWrongSound()
-                endGame()
+        if playing {
+            if even {
+                checkEven(false)
+            } else if multiple != 0 {
+                checkMultiple(false)
             } else {
-                playCircleSound()
-                iTaps += 1
-                displayCircle()
+                checkOdd(false)
+            }
+        }
+        
+    }
+    
+    @IBAction func pauseAction(sender: AnyObject) {
+        playing = false
+        UIView.animateWithDuration(0.3) { 
+            self.pauseBackground.alpha = 0.7
+            self.continueButton.alpha = 1.0
+            self.playerImage.alpha = 1.0
+        }
+    }
+    
+    @IBAction func continueAction(sender: AnyObject) {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: { 
+            self.pauseBackground.alpha = 0.0
+            self.continueButton.alpha = 0.0
+            self.playerImage.alpha = 0.0
+            }) { (Bool) in
+                self.playing = true
+        }
+    }
+    
+    
+    func correct() {
+        playCircleSound()
+        iTaps += 1
+        displayCircle()
+    }
+    
+    func wrong() {
+        playWrongSound()
+        endGame()
+    }
+    
+    func checkEven(circle: Bool) {
+        if (number % 2) == 0 {
+            if circle {
+                correct()
+            } else {
+                wrong()
             }
         } else {
-            if (number % 2) == 1 {
-                // lose
-                playWrongSound()
-                endGame()
+            if circle {
+                wrong()
             } else {
-                playCircleSound()
-                iTaps += 1
-                displayCircle()
+                correct()
+            }
+        }
+    }
+    
+    func checkOdd(circle: Bool) {
+        if (number % 2) == 0 {
+            if circle {
+                wrong()
+            } else {
+                correct()
+            }
+            
+        } else {
+            if circle {
+                correct()
+            } else {
+                wrong()
+            }
+        }
+    }
+    
+    func checkMultiple(circle: Bool) {
+        if (number % multiple) == 0 {
+            if circle {
+                correct()
+            } else {
+                wrong()
+            }
+            
+        } else {
+            if circle {
+                wrong()
+            } else {
+                correct()
             }
         }
     }
 
     func displayCircle(){
         // Set by rand from 0 to 150
-        number = Int(arc4random_uniform(151))
+        number = Int(arc4random_uniform(150)) + 1
 
         // Set button title
         circleButton.setTitle("\(number)", forState: .Normal)
@@ -178,32 +252,33 @@ class TapTapViewController: UIViewController {
         newButtonY = yoffset + 50 + buttonHeight / 2 //50 is for notifications
         circleButton.center.x = newButtonX
         circleButton.center.y = newButtonY
-
-
-
+        
     }
     
     func endGame() {
-        scoreLabel.text = "Puntaje: \(iTaps)"
-        UIView.animateWithDuration(0.3, delay: 0.0, options: [], animations: { 
-            self.whiteBg.alpha = 1.0
-            
-            self.scoreLabel.alpha = 1.0
-            
+        playing = false
+        UIView.animateWithDuration(0.2, delay: 0.0, options: [], animations: {
+            self.whiteLayer.alpha = 1.0
             }) { (Bool) in
-                
+                self.performSegueWithIdentifier("gameOver1Segue", sender: self)
         }
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "gameOver1Segue" {
+            let controller: GameOverViewController = segue.destinationViewController as! GameOverViewController
+            controller.score = iTaps
+            controller.boy = boy
+            
+        }
     }
-    */
+    
 
 }

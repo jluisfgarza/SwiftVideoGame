@@ -12,6 +12,14 @@
 		37721DC81CD0788000D95791 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37721DC71CD0788000D95791 /* wrong.mp3 */; };
 		37721DCA1CD11CFE00D95791 /* CreaUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */; };
 		37721DCC1CD1344900D95791 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37721DCB1CD1344900D95791 /* GamesViewController.swift */; };
+		378336D01CD7DA020081F065 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378336CF1CD7DA020081F065 /* SwipeViewController.swift */; };
+		378336D41CD7DB170081F065 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378336D31CD7DB170081F065 /* GameOverViewController.swift */; };
+		378336D61CD7DB5E0081F065 /* LoadPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378336D51CD7DB5E0081F065 /* LoadPlayerViewController.swift */; };
+		378336DB1CD83C0A0081F065 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378336DA1CD800420081F065 /* Oswald-Regular.ttf */; };
+		378336DC1CD83C0C0081F065 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378336D91CD800420081F065 /* Oswald-Light.ttf */; };
+		378336DD1CD83C0F0081F065 /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378336D81CD800420081F065 /* Oswald-Bold.ttf */; };
+		378F5D241CD947E000550760 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F5D231CD947E000550760 /* DraggableView.swift */; };
+		379A50D01CD7A79300161D9E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A50CF1CD7A79300161D9E /* InitialViewController.swift */; };
 		37F50EA91CCEF47200500440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F50EA81CCEF47200500440 /* AppDelegate.swift */; };
 		37F50EAB1CCEF47200500440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F50EAA1CCEF47200500440 /* ViewController.swift */; };
 		37F50EAE1CCEF47200500440 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F50EAC1CCEF47200500440 /* Main.storyboard */; };
@@ -27,6 +35,14 @@
 		37721DC71CD0788000D95791 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
 		37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreaUsuarioViewController.swift; sourceTree = "<group>"; };
 		37721DCB1CD1344900D95791 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
+		378336CF1CD7DA020081F065 /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		378336D31CD7DB170081F065 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		378336D51CD7DB5E0081F065 /* LoadPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadPlayerViewController.swift; sourceTree = "<group>"; };
+		378336D81CD800420081F065 /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
+		378336D91CD800420081F065 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		378336DA1CD800420081F065 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		378F5D231CD947E000550760 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
+		379A50CF1CD7A79300161D9E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		37F50EA51CCEF47100500440 /* Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F50EA81CCEF47200500440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37F50EAA1CCEF47200500440 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +65,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		378336D71CD7EAD30081F065 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				37F50EBA1CCEF99400500440 /* TapTapViewController.swift */,
+				378F5D251CD947E900550760 /* Swipe */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		378F5D221CD917D200550760 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				37F50EBC1CCEF9D300500440 /* ColorConstants.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		378F5D251CD947E900550760 /* Swipe */ = {
+			isa = PBXGroup;
+			children = (
+				378336CF1CD7DA020081F065 /* SwipeViewController.swift */,
+				378F5D231CD947E000550760 /* DraggableView.swift */,
+			);
+			name = Swipe;
+			sourceTree = "<group>";
+		};
 		37F50E9C1CCEF47100500440 = {
 			isa = PBXGroup;
 			children = (
@@ -71,12 +113,18 @@
 				37F50EA81CCEF47200500440 /* AppDelegate.swift */,
 				37F50EAA1CCEF47200500440 /* ViewController.swift */,
 				37F50EAC1CCEF47200500440 /* Main.storyboard */,
+				379A50CF1CD7A79300161D9E /* InitialViewController.swift */,
 				37721DC31CD0771100D95791 /* ChooseViewController.swift */,
+				378336D51CD7DB5E0081F065 /* LoadPlayerViewController.swift */,
 				37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */,
 				37721DCB1CD1344900D95791 /* GamesViewController.swift */,
-				37F50EBA1CCEF99400500440 /* TapTapViewController.swift */,
-				37F50EBC1CCEF9D300500440 /* ColorConstants.swift */,
+				378336D71CD7EAD30081F065 /* Games */,
+				378336D31CD7DB170081F065 /* GameOverViewController.swift */,
+				378F5D221CD917D200550760 /* Others */,
 				37F50EAF1CCEF47200500440 /* Assets.xcassets */,
+				378336D81CD800420081F065 /* Oswald-Bold.ttf */,
+				378336D91CD800420081F065 /* Oswald-Light.ttf */,
+				378336DA1CD800420081F065 /* Oswald-Regular.ttf */,
 				37721DC51CD0787400D95791 /* circleSound.mp3 */,
 				37721DC71CD0788000D95791 /* wrong.mp3 */,
 				37F50EB11CCEF47200500440 /* LaunchScreen.storyboard */,
@@ -145,7 +193,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				37721DC81CD0788000D95791 /* wrong.mp3 in Resources */,
+				378336DB1CD83C0A0081F065 /* Oswald-Regular.ttf in Resources */,
 				37721DC61CD0787400D95791 /* circleSound.mp3 in Resources */,
+				378336DD1CD83C0F0081F065 /* Oswald-Bold.ttf in Resources */,
+				378336DC1CD83C0C0081F065 /* Oswald-Light.ttf in Resources */,
 				37F50EB31CCEF47200500440 /* LaunchScreen.storyboard in Resources */,
 				37F50EB01CCEF47200500440 /* Assets.xcassets in Resources */,
 				37F50EAE1CCEF47200500440 /* Main.storyboard in Resources */,
@@ -160,12 +211,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				37721DCC1CD1344900D95791 /* GamesViewController.swift in Sources */,
+				378F5D241CD947E000550760 /* DraggableView.swift in Sources */,
+				378336D61CD7DB5E0081F065 /* LoadPlayerViewController.swift in Sources */,
 				37721DCA1CD11CFE00D95791 /* CreaUsuarioViewController.swift in Sources */,
+				378336D01CD7DA020081F065 /* SwipeViewController.swift in Sources */,
 				37F50EAB1CCEF47200500440 /* ViewController.swift in Sources */,
 				37F50EBB1CCEF99400500440 /* TapTapViewController.swift in Sources */,
 				37F50EA91CCEF47200500440 /* AppDelegate.swift in Sources */,
 				37721DC41CD0771100D95791 /* ChooseViewController.swift in Sources */,
+				378336D41CD7DB170081F065 /* GameOverViewController.swift in Sources */,
 				37F50EBD1CCEF9D300500440 /* ColorConstants.swift in Sources */,
+				379A50D01CD7A79300161D9E /* InitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

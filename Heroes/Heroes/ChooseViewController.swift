@@ -13,15 +13,89 @@ class ChooseViewController: UIViewController {
     
     @IBOutlet var boyButton: UIButton!
     @IBOutlet var girlButton: UIButton!
+    @IBOutlet var backButton: UIButton!
+    @IBOutlet var loadGameButton: UIButton!
+    
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var backgroundColor: UILabel!
     
+    
     var boy = true
+    var savedPlayers = true
+    var opened = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundColor.alpha = 0
         // Do any additional setup after loading the view.
+        
+        boyButton.alpha = 0.0
+        
+        girlButton.alpha = 0.0
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if opened {
+            if boy {
+                boyButton.alpha = 1.0
+            } else {
+                girlButton.alpha = 1.0
+            }
+        }
+        
+        opened = true
+        
+        loadGameButton.alpha = 0.0
+        backButton.alpha = 0.0
+        titleLabel.alpha = 0.0
+        
+        
+        
+        if self.savedPlayers {
+            UIView.animateWithDuration(0.3, animations: { 
+                self.backgroundColor.alpha = 0.0
+            })
+            UIView.animateWithDuration(0.2, delay: 0.1, options: .CurveEaseIn, animations: {
+                
+                self.loadGameButton.alpha = 1.0
+                
+            }) { (Bool) in
+                
+            }
+            UIView.animateWithDuration(0.2, delay: 0.2, options: .CurveEaseIn, animations: {
+                self.girlButton.alpha = 1.0
+                self.boyButton.alpha = 1.0
+            }) { (Bool) in
+                
+            }
+            
+            UIView.animateWithDuration(0.2, delay: 0.3, options: .CurveEaseIn, animations: {
+                self.backButton.alpha = 1.0
+                self.titleLabel.alpha = 1.0
+            }) { (Bool) in
+                
+            }
+            
+        } else {
+            UIView.animateWithDuration(0.2, delay: 0.1, options: .CurveEaseIn, animations: {
+                self.girlButton.alpha = 1.0
+                self.boyButton.alpha = 1.0
+            }) { (Bool) in
+                
+            }
+            
+            UIView.animateWithDuration(0.2, delay: 0.2, options: .CurveEaseIn, animations: {
+                self.backButton.alpha = 1.0
+                self.titleLabel.alpha = 1.0
+            }) { (Bool) in
+                
+            }
+        }
+        
+       
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,10 +110,10 @@ class ChooseViewController: UIViewController {
         UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.backgroundColor.alpha = 1.0
             self.girlButton.alpha = 0.0
+            self.loadGameButton.alpha = 0.0
         }) { (Bool) in
-            
+    
             self.performSegueWithIdentifier("crearUsuarioSegue", sender: self)
-            
         }
     }
     
@@ -51,11 +125,22 @@ class ChooseViewController: UIViewController {
         UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.backgroundColor.alpha = 1.0
             self.boyButton.alpha = 0.0
+            self.loadGameButton.alpha = 0.0
         }) { (Bool) in
             self.performSegueWithIdentifier("crearUsuarioSegue", sender: self)
         }
         
     }
+    
+    
+    @IBAction func backAction(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(false)
+    }
+    
+    @IBAction func loadGameAction(sender: AnyObject) {
+        performSegueWithIdentifier("loadGameSegue", sender: self)
+    }
+    
     
     
     

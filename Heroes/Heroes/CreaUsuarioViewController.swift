@@ -30,24 +30,41 @@ class CreaUsuarioViewController: UIViewController {
     @IBOutlet var playButton: UIButton!
     @IBOutlet var backButton: UIButton!
     
+    @IBOutlet var titleLabel: UILabel!
     
     var boy : Bool = true
+    
+    var playersName : [String] = []
+    var playersSex : [Bool] = []
+    var playersScore1 : [Int] = []
+    var playersScore2 : [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Read the data
+        
+        // Get data saved on NSUserDefaults and pass it to array
+        
+        
+        
+        
+        hideDataInputs()
         if boy {
+            girlImage.alpha = 0.0
             view.backgroundColor = .boyColor()
-            hideGirlDataInputs()
             animateBoyDataInputs()
         } else {
+            boyImage.alpha = 0.0
             view.backgroundColor = .girlColor()
-            hideBoyDataInputs()
             animateGirlDataInputs()
         }
+        animateView()
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,8 +93,16 @@ class CreaUsuarioViewController: UIViewController {
         }
     }
     
-    func hideBoyDataInputs() {
-        boyImage.alpha = 0.0
+    func animateView()  {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: {
+            self.playButton.alpha = 1.0
+            self.titleLabel.alpha = 1.0
+            //self.backButton.alpha = 1.0
+        }) { (Bool) in
+        }
+    }
+    
+    func hideDataInputs() {
         self.gradoSecBoy.alpha = 0.0
         self.gradoPrimBoy.alpha = 0.0
         self.primSecBoy.alpha = 0.0
@@ -85,10 +110,6 @@ class CreaUsuarioViewController: UIViewController {
         self.nombreTextFieldBoy.alpha = 0.0
         self.gradoBoy.alpha = 0.0
         self.gradoSecGirl.alpha = 0.0
-    }
-    
-    func hideGirlDataInputs() {
-        girlImage.alpha = 0.0
         self.gradoSecGirl.alpha = 0.0
         self.gradoPrimGirl.alpha = 0.0
         self.primSecGirl.alpha = 0.0
@@ -96,6 +117,8 @@ class CreaUsuarioViewController: UIViewController {
         self.nombreTextFieldGirl.alpha = 0.0
         self.gradoGirl.alpha = 0.0
         self.gradoSecBoy.alpha = 0.0
+        playButton.alpha = 0.0
+        titleLabel.alpha = 0.0
     }
     
     @IBAction func primSecAction(sender: UISegmentedControl) {
@@ -143,14 +166,97 @@ class CreaUsuarioViewController: UIViewController {
     
     
     @IBAction func playAction(sender: AnyObject) {
+        if boy {
+            if nombreTextFieldBoy.text == "" {
+                showAlert()
+                return
+            }
+            print("Nombre: \(nombreTextFieldBoy.text)")
+            print("Sexo: Niño")
+            savePlayer()
+            if primSecBoy.selectedSegmentIndex == 0 {
+                print("Primaria: \(gradoPrimBoy.selectedSegmentIndex + 1)")
+                
+                
+            } else {
+                print("Secundaria: \(gradoSecBoy.selectedSegmentIndex + 1)")
+            }
+        } else {
+            if nombreTextFieldGirl.text == "" {
+                showAlert()
+                return
+            }
+            print(nombreTextFieldGirl.text)
+            print("Sexo: Niña")
+            savePlayer()
+            if primSecGirl.selectedSegmentIndex == 0 {
+                print("Primaria: \(gradoPrimGirl.selectedSegmentIndex + 1)")
+            } else {
+                print("Secundaria: \(gradoSecGirl.selectedSegmentIndex + 1)")
+            }
+        }
+        
+        
+        
         performSegueWithIdentifier("gamesSegue", sender: self)
+    }
+    
+    func savePlayer(){
+        if boy {
+            playersName.append(nombreTextFieldBoy.text!)
+        } else {
+            playersName.append(nombreTextFieldGirl.text!)
+        }
+        playersSex.append(boy)
+        playersScore1.append(0)
+        playersScore2.append(0)
+        
+        // Save the data
+        NSUserDefaults.standardUserDefaults().setObject(playersName, forKey : "playersName")
+        NSUserDefaults.standardUserDefaults().setObject(playersSex, forKey : "playersSex")
+        NSUserDefaults.standardUserDefaults().setObject(playersScore1, forKey: "scoreTapTap")
+        NSUserDefaults.standardUserDefaults().setObject(playersScore2, forKey: "scoreSwipe")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    func updateArrays(){
+        if let names = NSUserDefaults.standardUserDefaults().arrayForKey("playersName") {
+            for name in names {
+                playersName.append(name as! String)
+            }
+        }
+
+        if let sex = NSUserDefaults.standardUserDefaults().arrayForKey("playersSex") {
+            for gender in sex {
+                playersSex.append(gender as! Bool)
+            }
+        }
+        
+        if let scoreTapTap = NSUserDefaults.standardUserDefaults().arrayForKey("scoreTapTap") {
+            for score in scoreTapTap {
+                playersScore1.append(score as! Int)
+            }
+        }
+        
+        if let scoreSwipe = NSUserDefaults.standardUserDefaults().arrayForKey("scoreSwipe") {
+            for score in scoreSwipe {
+                playersScore2.append(score as! Int)
+            }
+        }
     }
     
     
     @IBAction func backAction(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(false)
     }
     
+    func showAlert() {
+        let alertController = UIAlertController(title: "Escribe tu nombre", message:
+            "Es necesario que escribas tu nombre para continuar", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 
     
     // MARK: - Navigation

@@ -19,4 +19,7 @@ extension UIColor {
         return UIColor(red: 215/255, green: 160/255, blue: 238/255, alpha: 1)
     }
     
+    class func neutralColor() -> UIColor {
+        return UIColor(red: 77/255, green: 195/255, blue: 190/255, alpha: 1)
+    }
 }
