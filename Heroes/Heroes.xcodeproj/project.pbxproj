@@ -19,6 +19,8 @@
 		378336DC1CD83C0C0081F065 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378336D91CD800420081F065 /* Oswald-Light.ttf */; };
 		378336DD1CD83C0F0081F065 /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378336D81CD800420081F065 /* Oswald-Bold.ttf */; };
 		378F5D241CD947E000550760 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F5D231CD947E000550760 /* DraggableView.swift */; };
+		378F5D281CD9CDE000550760 /* tapsTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F5D271CD9CDE000550760 /* tapsTimer.swift */; };
+		378F5D2A1CDA505400550760 /* HomeAlbumsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F5D291CDA505400550760 /* HomeAlbumsCell.swift */; };
 		379A50D01CD7A79300161D9E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379A50CF1CD7A79300161D9E /* InitialViewController.swift */; };
 		37F50EA91CCEF47200500440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F50EA81CCEF47200500440 /* AppDelegate.swift */; };
 		37F50EAB1CCEF47200500440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F50EAA1CCEF47200500440 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 		378336D91CD800420081F065 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		378336DA1CD800420081F065 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		378F5D231CD947E000550760 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
+		378F5D271CD9CDE000550760 /* tapsTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tapsTimer.swift; sourceTree = "<group>"; };
+		378F5D291CDA505400550760 /* HomeAlbumsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAlbumsCell.swift; sourceTree = "<group>"; };
 		379A50CF1CD7A79300161D9E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		37F50EA51CCEF47100500440 /* Heroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F50EA81CCEF47200500440 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +72,7 @@
 		378336D71CD7EAD30081F065 /* Games */ = {
 			isa = PBXGroup;
 			children = (
-				37F50EBA1CCEF99400500440 /* TapTapViewController.swift */,
+				378F5D261CD9B14200550760 /* TapTap */,
 				378F5D251CD947E900550760 /* Swipe */,
 			);
 			name = Games;
@@ -89,6 +93,64 @@
 				378F5D231CD947E000550760 /* DraggableView.swift */,
 			);
 			name = Swipe;
+			sourceTree = "<group>";
+		};
+		378F5D261CD9B14200550760 /* TapTap */ = {
+			isa = PBXGroup;
+			children = (
+				37F50EBA1CCEF99400500440 /* TapTapViewController.swift */,
+				378F5D271CD9CDE000550760 /* tapsTimer.swift */,
+			);
+			name = TapTap;
+			sourceTree = "<group>";
+		};
+		378F5D2B1CDA511A00550760 /* Load Player */ = {
+			isa = PBXGroup;
+			children = (
+				378336D51CD7DB5E0081F065 /* LoadPlayerViewController.swift */,
+				378F5D291CDA505400550760 /* HomeAlbumsCell.swift */,
+			);
+			name = "Load Player";
+			sourceTree = "<group>";
+		};
+		378F5D2C1CDA522300550760 /* Crear Usuario */ = {
+			isa = PBXGroup;
+			children = (
+				37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */,
+			);
+			name = "Crear Usuario";
+			sourceTree = "<group>";
+		};
+		378F5D2D1CDA523200550760 /* Seleccionar Juegos */ = {
+			isa = PBXGroup;
+			children = (
+				37721DCB1CD1344900D95791 /* GamesViewController.swift */,
+			);
+			name = "Seleccionar Juegos";
+			sourceTree = "<group>";
+		};
+		378F5D2E1CDA524600550760 /* Game Over */ = {
+			isa = PBXGroup;
+			children = (
+				378336D31CD7DB170081F065 /* GameOverViewController.swift */,
+			);
+			name = "Game Over";
+			sourceTree = "<group>";
+		};
+		378F5D2F1CDA525A00550760 /* Elegir jugador */ = {
+			isa = PBXGroup;
+			children = (
+				37721DC31CD0771100D95791 /* ChooseViewController.swift */,
+			);
+			name = "Elegir jugador";
+			sourceTree = "<group>";
+		};
+		378F5D301CDA526600550760 /* Pantalla Inicial */ = {
+			isa = PBXGroup;
+			children = (
+				379A50CF1CD7A79300161D9E /* InitialViewController.swift */,
+			);
+			name = "Pantalla Inicial";
 			sourceTree = "<group>";
 		};
 		37F50E9C1CCEF47100500440 = {
@@ -113,13 +175,13 @@
 				37F50EA81CCEF47200500440 /* AppDelegate.swift */,
 				37F50EAA1CCEF47200500440 /* ViewController.swift */,
 				37F50EAC1CCEF47200500440 /* Main.storyboard */,
-				379A50CF1CD7A79300161D9E /* InitialViewController.swift */,
-				37721DC31CD0771100D95791 /* ChooseViewController.swift */,
-				378336D51CD7DB5E0081F065 /* LoadPlayerViewController.swift */,
-				37721DC91CD11CFE00D95791 /* CreaUsuarioViewController.swift */,
-				37721DCB1CD1344900D95791 /* GamesViewController.swift */,
+				378F5D301CDA526600550760 /* Pantalla Inicial */,
+				378F5D2F1CDA525A00550760 /* Elegir jugador */,
+				378F5D2B1CDA511A00550760 /* Load Player */,
+				378F5D2C1CDA522300550760 /* Crear Usuario */,
+				378F5D2D1CDA523200550760 /* Seleccionar Juegos */,
 				378336D71CD7EAD30081F065 /* Games */,
-				378336D31CD7DB170081F065 /* GameOverViewController.swift */,
+				378F5D2E1CDA524600550760 /* Game Over */,
 				378F5D221CD917D200550760 /* Others */,
 				37F50EAF1CCEF47200500440 /* Assets.xcassets */,
 				378336D81CD800420081F065 /* Oswald-Bold.ttf */,
@@ -216,7 +278,9 @@
 				37721DCA1CD11CFE00D95791 /* CreaUsuarioViewController.swift in Sources */,
 				378336D01CD7DA020081F065 /* SwipeViewController.swift in Sources */,
 				37F50EAB1CCEF47200500440 /* ViewController.swift in Sources */,
+				378F5D281CD9CDE000550760 /* tapsTimer.swift in Sources */,
 				37F50EBB1CCEF99400500440 /* TapTapViewController.swift in Sources */,
+				378F5D2A1CDA505400550760 /* HomeAlbumsCell.swift in Sources */,
 				37F50EA91CCEF47200500440 /* AppDelegate.swift in Sources */,
 				37721DC41CD0771100D95791 /* ChooseViewController.swift in Sources */,
 				378336D41CD7DB170081F065 /* GameOverViewController.swift in Sources */,

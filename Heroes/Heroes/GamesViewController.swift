@@ -13,6 +13,7 @@ class GamesViewController: UIViewController {
     @IBOutlet var labelJuegos: UILabel!
     
     var boy : Bool = true
+    var playerIndex : Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,9 +73,11 @@ class GamesViewController: UIViewController {
         if segue.identifier == "tapTapSegue" {
             let controller: TapTapViewController = segue.destinationViewController as! TapTapViewController
             controller.boy = boy
+            controller.playerIndex = playerIndex
         } else if segue.identifier == "swipeSegue" {
             let controller: SwipeViewController = segue.destinationViewController as! SwipeViewController
             controller.boy = boy
+            controller.playerIndex = playerIndex
         }
     }
     

@@ -13,9 +13,14 @@ class GameOverViewController: UIViewController {
     @IBOutlet var homeButton: UIButton!
     @IBOutlet var background: UILabel!
     
-    
-    var score : Int!
+    var score : Int! = 0
+    var game : Int!
     var boy = true
+    var playerIndex : Int!
+    var playersName : [String] = []
+    var playersSex : [Bool] = []
+    var playersScore1 : [Int] = []
+    var playersScore2 : [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,8 @@ class GameOverViewController: UIViewController {
         } else {
             background.backgroundColor = .girlColor()
         }
+        
+        saveScore()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +62,61 @@ class GameOverViewController: UIViewController {
             }
         }
     }
+    
+    func updateArrays(){
+        if let names = NSUserDefaults.standardUserDefaults().arrayForKey("playersName") {
+            for name in names {
+                playersName.append(name as! String)
+            }
+        }
+        
+        if let sex = NSUserDefaults.standardUserDefaults().arrayForKey("playersSex") {
+            for gender in sex {
+                playersSex.append(gender as! Bool)
+            }
+        }
+        
+        if let scoreTapTap = NSUserDefaults.standardUserDefaults().arrayForKey("scoreTapTap") {
+            for score in scoreTapTap {
+                playersScore1.append(score as! Int)
+            }
+        }
+        
+        if let scoreSwipe = NSUserDefaults.standardUserDefaults().arrayForKey("scoreSwipe") {
+            for score in scoreSwipe {
+                playersScore2.append(score as! Int)
+            }
+        }
+    }
+    
+    func saveScore(){
+        if game == 1 {
+            if let scoreTapTap = NSUserDefaults.standardUserDefaults().arrayForKey("scoreTapTap") {
+                print(score)
+                let num = scoreTapTap[playerIndex] as! Int
+                if score > num {
+                    updateArrays()
+                    playersScore1[playerIndex] = score
+                    NSUserDefaults.standardUserDefaults().setObject(playersScore1, forKey: "scoreTapTap")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    print("New Highscore")
+                }
+            }
+        } else if game == 2 {
+            if let scoreSwipe = NSUserDefaults.standardUserDefaults().arrayForKey("scoreSwipe") {
+                if score > scoreSwipe[playerIndex] as! Int {
+                    updateArrays()
+                    playersScore2[playerIndex] = score
+                    NSUserDefaults.standardUserDefaults().setObject(playersScore2, forKey: "scoreSwipe")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    print("New Highscore")
+                }
+            }
+        }
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 

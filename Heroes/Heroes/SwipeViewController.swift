@@ -19,8 +19,9 @@ class SwipeViewController: UIViewController, DraggableViewDelegate {
     var numbersArray : [Int]! = []
     var iCont = 0
     
-    // To be deleted
+    var iScore = 0
     
+    var playerIndex : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,14 +179,22 @@ class SwipeViewController: UIViewController, DraggableViewDelegate {
     }
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "gameOver1Segue" {
+            let controller: GameOverViewController = segue.destinationViewController as! GameOverViewController
+            controller.score = iScore
+            controller.boy = boy
+            controller.game = 2
+            controller.playerIndex = playerIndex
+            
+        }
      }
-     */
+     
     
 }

@@ -33,11 +33,13 @@ class CreaUsuarioViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     
     var boy : Bool = true
-    
+    var playerIndex : Int = 0
     var playersName : [String] = []
     var playersSex : [Bool] = []
     var playersScore1 : [Int] = []
     var playersScore2 : [Int] = []
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,7 @@ class CreaUsuarioViewController: UIViewController {
         
         
         
+        updateArrays()
         
         hideDataInputs()
         if boy {
@@ -202,11 +205,15 @@ class CreaUsuarioViewController: UIViewController {
     }
     
     func savePlayer(){
+        
+        playerIndex = playersName.count
+        
         if boy {
             playersName.append(nombreTextFieldBoy.text!)
         } else {
             playersName.append(nombreTextFieldGirl.text!)
         }
+        
         playersSex.append(boy)
         playersScore1.append(0)
         playersScore2.append(0)
@@ -225,7 +232,7 @@ class CreaUsuarioViewController: UIViewController {
                 playersName.append(name as! String)
             }
         }
-
+        
         if let sex = NSUserDefaults.standardUserDefaults().arrayForKey("playersSex") {
             for gender in sex {
                 playersSex.append(gender as! Bool)
@@ -243,6 +250,21 @@ class CreaUsuarioViewController: UIViewController {
                 playersScore2.append(score as! Int)
             }
         }
+        
+        let count = playersName.count
+        
+        if count != 0 {
+            for i in 0..<count {
+                print("JUGADOR \(i + 1)")
+                print("Nombre: \(playersName[i])")
+                print("Sexo: \(playersSex[i])")
+                print("ScoreTapTap: \(playersScore1[i])")
+                print("ScoreSwipe: \(playersScore2[i])")
+            }
+        }
+        
+        
+        
     }
     
     
@@ -268,6 +290,7 @@ class CreaUsuarioViewController: UIViewController {
         if segue.identifier == "gamesSegue" {
             let controller: GamesViewController = segue.destinationViewController as! GamesViewController
             controller.boy = boy
+            controller.playerIndex = playerIndex
         }
     }
     

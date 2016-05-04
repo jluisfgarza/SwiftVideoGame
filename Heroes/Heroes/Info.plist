@@ -43,7 +43,9 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Oswald</string>
+		<string>Oswald-Regular.ttf</string>
+		<string>Oswald-Light.ttf</string>
+		<string>Oswald-Bold.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -32,9 +32,11 @@ class TapTapViewController: UIViewController {
     @IBOutlet var continueButton: UIButton!
     
     @IBOutlet var playerImage: UIImageView!
+    @IBOutlet var timerLabel: UILabel!
     
     // Initialization of variables.
     var iTaps = 0               // Integer number of taps made.
+    var iCounter = 30           // Integer for timer
     var number = 0              // Integer number that is showed on the game
     var boy = true              // Bool variable that tells us if the player is a boy or a girls
     var even = true             // Bool variable to know if the answers are odd or even
@@ -42,8 +44,9 @@ class TapTapViewController: UIViewController {
     var newButtonX : CGFloat!   // CGFloat variable to change X position of the circle button
     var newButtonY : CGFloat!   // CGFloat variable to change Y position of the circle button
     var multiple = 0            // Integer number to know if the game is for multiples and which one
+    var playerIndex : Int!
     
-    
+    var timer = NSTimer()
 
     // Initialization of sound variables.
     var circleSound: AVAudioPlayer = AVAudioPlayer()
@@ -84,6 +87,8 @@ class TapTapViewController: UIViewController {
             playerImage.image = UIImage(named: "girl")
         }
         
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(TapTapViewController.result), userInfo: nil, repeats: true)
+        
         
         // Start game
         displayCircle()
@@ -104,7 +109,7 @@ class TapTapViewController: UIViewController {
         if let buttonY = newButtonY {
             circleButton.center.y = buttonY
         }
- */
+        */
     }
 
     // Sound functions.
@@ -114,6 +119,16 @@ class TapTapViewController: UIViewController {
 
     func playWrongSound() {
         wrongSound.play()
+    }
+    
+    func result (){
+        if iCounter != 0 {
+            iCounter -= 1
+            timerLabel.text = String(iCounter)
+        } else {
+            timer.invalidate()
+            wrong()
+        }
     }
 
     // 🇲🇽
@@ -145,6 +160,7 @@ class TapTapViewController: UIViewController {
     
     @IBAction func pauseAction(sender: AnyObject) {
         playing = false
+        timer.invalidate()
         UIView.animateWithDuration(0.3) { 
             self.pauseBackground.alpha = 0.7
             self.continueButton.alpha = 1.0
@@ -153,6 +169,7 @@ class TapTapViewController: UIViewController {
     }
     
     @IBAction func continueAction(sender: AnyObject) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(TapTapViewController.result), userInfo: nil, repeats: true)
         UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseIn, animations: { 
             self.pauseBackground.alpha = 0.0
             self.continueButton.alpha = 0.0
@@ -161,7 +178,6 @@ class TapTapViewController: UIViewController {
                 self.playing = true
         }
     }
-    
     
     func correct() {
         playCircleSound()
@@ -197,7 +213,6 @@ class TapTapViewController: UIViewController {
             } else {
                 correct()
             }
-            
         } else {
             if circle {
                 correct()
@@ -276,7 +291,8 @@ class TapTapViewController: UIViewController {
             let controller: GameOverViewController = segue.destinationViewController as! GameOverViewController
             controller.score = iTaps
             controller.boy = boy
-            
+            controller.game = 1
+            controller.playerIndex = playerIndex
         }
     }
     
